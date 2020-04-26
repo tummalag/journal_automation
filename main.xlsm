@@ -1,0 +1,21 @@
+Private Sub Workbook_Open()
+'
+'This code runs while opening the excel. Conpares the date in cell(2,2) if matches does nothing 
+'else creates those many rows till it matches present date
+'
+
+Dim LDate As String
+Dim presDate As Date
+presDate = Cells(2, 2).Value
+If Cells(2, 2).Value <> Date Then
+    LDate = DateDiff("d", presDate, Date)
+ElseIf Cells(2, 2).Value = Date Then
+    Exit Sub
+End If
+Dim sendingDate As Date
+For i = 1 To LDate
+    sendingDate = presDate + i
+    Call test1(sendingDate)
+Next i
+
+End Sub
