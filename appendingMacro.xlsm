@@ -1,0 +1,28 @@
+Sub test1(dateVal)
+'
+' This Macro creates new cells below the table heading cells and changes the cell properties such as font, font size and allignment
+'
+
+'
+    Range("A1").Select
+    ActiveCell.FormulaR1C1 = "Day"
+    Range("A2:H2").Select
+    Selection.Insert Shift:=xlDown
+    Range("A2:H2").Select
+    With Selection.Interior
+        .Pattern = xlNone
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Selection.Font.Size = 14
+    Selection.Font.Size = 12
+    Selection.Font.Bold = True
+    Selection.Font.Bold = False
+    Range("B2").Select
+    ActiveCell.FormulaR1C1 = dateVal
+    Range("B2").Select
+    Selection.NumberFormat = "[$-en-US]mmmm d, yyyy;@"
+    Range("A2").Select
+    ActiveCell.FormulaR1C1 = "=TEXT(RC[1],""dddd"")"
+    Range("A3").Select
+End Sub
